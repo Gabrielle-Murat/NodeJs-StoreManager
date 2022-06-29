@@ -8,6 +8,15 @@ const getProducts = async () => {
   return productsList;
 };
 
+const getProductById = async (id) => {
+  const product = await Products.getProductById(id);
+
+  if (!product) return null;
+
+  return product;
+};
+
 module.exports = {
   getProducts,
+  getProductById,
 };

@@ -19,7 +19,7 @@ const getProductById = async (id) => {
 
   const [productsArray] = await connection.execute(productIdQuery, [id]);
 
-  if (productsArray.length === 0) return null;
+  // if (productsArray.length === 0) return null;
   return productsArray[0];
 };
 

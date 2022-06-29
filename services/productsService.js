@@ -11,7 +11,7 @@ const getProducts = async () => {
 const getProductById = async (id) => {
   const product = await Products.getProductById(id);
 
-  if (!product) return null;
+  // if (!product) return null;
 
   return product;
 };

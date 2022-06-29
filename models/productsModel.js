@@ -12,6 +12,18 @@ const getProducts = async () => {
   return productsList;
 };
 
+const getProductById = async (id) => {
+  const productIdQuery = `
+    SELECT * FROM StoreManager.products AS prod WHERE id = ? ORDER BY id;
+  `;
+
+  const [productsArray] = await connection.execute(productIdQuery, [id]);
+
+  if (productsArray.length === 0) return null;
+  return productsArray[0];
+};
+
 module.exports = {
   getProducts,
+  getProductById,
 };

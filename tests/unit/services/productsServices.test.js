@@ -70,4 +70,25 @@ describe('Service de Products:', () => {
       expect(received).to.have.property('id', 1);
     });
   });
+
+  describe('3 - Cadastra um novo produto no db:', () => {
+    const newProductMock = {
+      id: 1,
+      name: 'produto A',
+    };
+    const { name: nameMock } = newProductMock;
+
+    beforeEach(() => {
+      sinon.stub(productsModel, 'createProduct').returns(newProductMock);
+    });
+
+    afterEach(() => {
+      productsModel.createProduct.restore();
+    });
+
+    it('Será validado que é retornado um objeto', async () => {
+      const received = await productsService.createProduct(nameMock);
+      expect(received).to.be.an('object');
+    });
+  });
 });

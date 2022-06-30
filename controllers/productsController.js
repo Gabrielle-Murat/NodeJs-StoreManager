@@ -19,7 +19,18 @@ const getProductById = async (req, res) => {
   return res.status(200).json(product);
 };
 
+// requisito 3
+
+const createProduct = async (req, res) => {
+  const { name } = req.body;
+
+  const product = await Products.createProduct(name);
+
+  return res.status(201).json(product);
+};
+
 module.exports = {
   getProducts,
   getProductById,
+  createProduct,
 };

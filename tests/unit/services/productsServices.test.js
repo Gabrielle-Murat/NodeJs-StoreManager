@@ -28,7 +28,7 @@ describe('Service de Products:', () => {
       productsModel.getProducts.restore();
     });
 
-    it('Será validado que é retornado um array de objetos de products', async () => {
+    it('Será validado que é retornado um array de objetos de produtos', async () => {
       const received = await productsService.getProducts();
       expect(received).to.be.an('array');
     });
@@ -39,4 +39,35 @@ describe('Service de Products:', () => {
     });
   });
 
+  describe('2 - Busca um produto por Id:', () => {
+    const idMock = 1;
+    const model = {
+      "id": 1,
+      "name": "produto A",
+      "quantity": 10
+    };
+
+    beforeEach(() => {
+      sinon.stub(productsModel, 'getProductById').resolves(model);
+    });
+
+    afterEach(() => {
+      productsModel.getProductById.restore();
+    });
+
+    it('Será validado que é retornado um objeto', async () => {
+      const received = await productsService.getProductById(idMock);
+      expect(received).to.be.an('object');
+    });
+
+    it('Será validado que o objeto retornado possui as chaves "id", "name" e "quantity"', async () => {
+      const received = await productsService.getProductById(idMock);
+      expect(received).to.include.all.keys('id', 'name', 'quantity');
+    });
+
+    it('Será validado que o objeto retornado possui o id correto', async () => {
+      const received = await productsService.getProductById(idMock);
+      expect(received).to.have.property('id', 1);
+    });
+  });
 });

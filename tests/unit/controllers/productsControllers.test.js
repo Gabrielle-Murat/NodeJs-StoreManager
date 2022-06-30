@@ -64,11 +64,75 @@ describe('Controller de Products:', () => {
         await productsController.getProducts(req, res);
         expect(res.status.calledWith(404)).to.be.equal(true);
       });
-      it('Será validado que é retornada a mensagem No products found', async () => {
+      it('Será validado que é retornada a mensagem "No products found"', async () => {
         await productsController.getProducts(req, res);
         expect(res.json.calledWith({ message: 'No products found' })).to.be.equal(true);
       });
     });
   });
 
+  describe('2 - Busca um produto por Id:', () => {
+    describe('2.1 - Caso de sucesso:', () => {
+      const idMock = 1;
+      const req = {};
+      const res = {};
+      const model = [
+        {
+          "id": 1,
+          "name": "produto A",
+          "quantity": 10
+        }
+      ];
+
+      beforeEach(() => {
+        req.body = {};
+        req.params = { idMock };
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+        sinon.stub(productsService, 'getProductById').resolves(model);
+      });
+
+      afterEach(() => {
+        productsService.getProductById.restore();
+      });
+
+      it('Será validado que é retornado status 200', async () => {
+        await productsController.getProductById(req, res);
+        expect(res.status.calledWith(200)).to.be.equal(true);
+      });
+
+      it('Será validado que é retornado o produto buscado', async () => {
+        await productsController.getProductById(req, res);
+        expect(res.json.calledWith(model)).to.be.equal(true);
+      });
+    });
+
+    describe('2.2 - Caso de falha:', () => {
+      const idMock = 2;
+      const req = {};
+      const res = {};
+
+      beforeEach(() => {
+        req.body = {};
+        req.params = { idMock };
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+        sinon.stub(productsService, 'getProductById').resolves(null);
+      });
+
+      afterEach(() => {
+        productsService.getProductById.restore();
+      });
+
+      it('Será validado que é retornado status 404', async () => {
+        await productsController.getProductById(req, res);
+        expect(res.status.calledWith(404)).to.be.equal(true);
+      });
+
+      it('Será validado que é retornada a mensagem "Product not found"', async () => {
+        await productsController.getProductById(req, res);
+        expect(res.json.calledWith({ message: 'Product not found' })).to.be.equal(true);
+      });
+    });
+  });
 });

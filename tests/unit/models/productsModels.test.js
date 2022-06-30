@@ -30,15 +30,35 @@ describe('Model de Products:', () => {
       connection.execute.restore();
     });
 
-    it('Será validado que é retornado um array de objetos de products', async () => {
+    it('Será validado que é retornado um array de objetos de produtos', async () => {
       const received = await productsModel.getProducts();
       expect(received).to.be.an('array');
     });
-
-    it('Será validado que o array possui 2 itens', async () => {
-      const received = await productsModel.getProducts();
-      expect(received).to.have.length(2);
-    });
   });
 
+  describe('2 - Busca um produto por Id:', () => {
+    const idMock = 1;
+    const model = [
+      [
+        {
+          "id": 1,
+          "name": "produto A",
+          "quantity": 10
+        },
+      ],
+    ];
+
+    beforeEach(async () => {
+      sinon.stub(connection, 'execute').resolves(model);
+    });
+
+    afterEach(async () => {
+      connection.execute.restore();
+    });
+
+    it('Será validado que é retornado um objeto', async () => {
+      const received = await productsModel.getProductById(idMock);
+      expect(received).to.be.an('object');
+    });
+  });
 });

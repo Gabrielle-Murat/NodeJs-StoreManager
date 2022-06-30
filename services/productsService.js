@@ -16,7 +16,16 @@ const getProductById = async (id) => {
   return product;
 };
 
+// requisito 3
+
+const createProduct = async (productName) => {
+  const product = await Products.createProduct(productName);
+
+  return product;
+};
+
 module.exports = {
   getProducts,
   getProductById,
+  createProduct,
 };

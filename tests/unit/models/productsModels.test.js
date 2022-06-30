@@ -61,4 +61,41 @@ describe('Model de Products:', () => {
       expect(received).to.be.an('object');
     });
   });
+
+  describe('3 - Cadastra um novo produto no db:', () => {
+    const newProductMock = {
+      name: 'produto A',
+    };
+
+    const { name: nameMock } = newProductMock;
+    const model = [{ insertId: 1 }];
+
+    beforeEach(async () => {
+      sinon.stub(connection, 'execute').resolves(model);
+    });
+
+    afterEach(async () => {
+      connection.execute.restore();
+    });
+
+    it('Será validado que é retornado um objeto', async () => {
+      const received = await productsModel.createProduct(nameMock);
+      expect(received).to.be.an('object');
+    });
+
+    it('Será validado que o objeto retornado possui as chaves id e name', async () => {
+      const received = await productsModel.createProduct(nameMock);
+      expect(received).to.include.all.keys('id', 'name');
+    });
+
+    it('Será validado que o valor da chave id corresponde ao id do produto criado', async () => {
+      const received = await productsModel.createProduct(nameMock);
+      expect(received.id).to.be.equal(1);
+    });
+
+    it('Será validado que o valor da chave name corresponde ao nome enviado no corpo da requisição', async () => {
+      const received = await productsModel.createProduct(nameMock);
+      expect(received.name).to.be.equal('produto A');
+    });
+  });
 });

@@ -135,4 +135,36 @@ describe('Controller de Products:', () => {
       });
     });
   });
+
+  describe('3 - Cadastra um novo produto no db:', () => {
+    const req = {};
+    const res = {};
+    const model = [
+      {
+        "id": 1,
+        "name": "produto A",
+      }
+    ];
+
+    beforeEach(() => {
+      req.body = {};
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productsService, 'createProduct').resolves(model);
+    });
+
+    afterEach(() => {
+      productsService.createProduct.restore();
+    });
+
+    it('Será validado que é retornado status 201', async () => {
+      await productsController.createProduct(req, res);
+      expect(res.status.calledWith(201)).to.be.equal(true);
+    });
+
+    it('Será validado que é retornado o produto criado', async () => {
+      await productsController.createProduct(req, res);
+      expect(res.json.calledWith(model)).to.be.equal(true);
+    });
+  });
 });

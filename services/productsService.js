@@ -36,9 +36,18 @@ const updateProduct = async (productName, productId) => {
   return response;
 };
 
+const deleteProduct = async (productId) => {
+  const checkExistance = await Products.getProductById(productId);
+
+  if (!checkExistance) return 'not found';
+
+  await Products.deleteProduct(productId);
+};
+
 module.exports = {
   getProducts,
   getProductById,
   createProduct,
   updateProduct,
+  deleteProduct,
 };

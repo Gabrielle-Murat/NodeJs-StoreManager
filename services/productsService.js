@@ -36,6 +36,8 @@ const updateProduct = async (productName, productId) => {
   return response;
 };
 
+// requisito 12
+
 const deleteProduct = async (productId) => {
   const checkExistance = await Products.getProductById(productId);
 

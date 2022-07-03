@@ -24,8 +24,21 @@ const createProduct = async (productName) => {
   return product;
 };
 
+// requisito 10
+
+const updateProduct = async (productName, productId) => {
+  const checkExistance = await Products.getProductById(productId);
+
+  if (!checkExistance) return 'not found';
+
+  const response = await Products.updateProduct(productName, productId);
+
+  return response;
+};
+
 module.exports = {
   getProducts,
   getProductById,
   createProduct,
+  updateProduct,
 };

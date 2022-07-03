@@ -98,4 +98,30 @@ describe('Model de Products:', () => {
       expect(received.name).to.be.equal('produto A');
     });
   });
+
+  describe('4 - Atualiza um produto no db:', () => {
+    const model = {
+      id: 1,
+      name: 'produto A',
+    };
+    const { name, id } = model;
+
+    beforeEach(() => {
+      sinon.stub(connection, 'execute').resolves(model);
+    });
+
+    afterEach(() => {
+      connection.execute.restore();
+    });
+
+    it('Será validado que é retornado um objeto', async () => {
+      const received = await productsModel.updateProduct(name, id);
+      expect(received).to.be.an('object');
+    });
+
+    it('Será validado que o objeto possui o id correto', async () => {
+      const received = await productsModel.updateProduct(name, id);
+      expect(received).to.have.property('id', 1);
+    });
+  });
 });

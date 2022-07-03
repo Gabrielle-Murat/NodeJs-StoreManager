@@ -167,4 +167,67 @@ describe('Controller de Products:', () => {
       expect(res.json.calledWith(model)).to.be.equal(true);
     });
   });
+
+  describe('4 - Atualiza um produto no db:', () => {
+    describe('4.1 - Caso de sucesso:', () => {
+      const req = {};
+      const res = {};
+      const model = {
+        id: 1,
+        name: 'produto A',
+      };
+
+      beforeEach(() => {
+        req.body = {
+          name: 'produto A',
+        };
+        req.params = { id: 1 };
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+        sinon.stub(productsService, 'updateProduct').resolves(model);
+      });
+
+      afterEach(() => {
+        productsService.updateProduct.restore();
+      });
+
+      it('Será validado que é retornado status 200', async () => {
+        await productsController.updateProduct(req, res);
+        expect(res.status.calledWith(200)).to.be.equal(true);
+      });
+
+      it('Será validado que é retornado um objeto com o produto atualizado', async () => {
+        await productsController.updateProduct(req, res);
+        expect(res.json.calledWith(model)).to.be.equal(true);
+      });
+    });
+
+    describe('4.2 - Caso de falha:', () => {
+      const req = {};
+      const res = {};
+      const model = 'not found';
+
+      beforeEach(() => {
+        req.body = {};
+        req.params = { id: 3 };
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+        sinon.stub(productsService, 'updateProduct').resolves(model);
+      });
+
+      afterEach(() => {
+        productsService.updateProduct.restore();
+      });
+
+      it('Será validado que é retornado status 404', async () => {
+        await productsController.updateProduct(req, res);
+        expect(res.status.calledWith(404)).to.be.equal(true);
+      });
+
+      it('Será validado que é retornada a mensagem "Product not found"', async () => {
+        await productsController.updateProduct(req, res);
+        expect(res.json.calledWith({ message: 'Product not found' }));
+      });
+    });
+  });
 });

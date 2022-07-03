@@ -91,4 +91,58 @@ describe('Service de Products:', () => {
       expect(received).to.be.an('object');
     });
   });
+
+  describe('4 - Atualiza um produto no db:', () => {
+    describe('4.1 - Caso de sucesso:', () => {
+      const model = {
+        id: 2,
+        name: 'produto C',
+      };
+  
+      const updatedProductMock = {
+        id: 2,
+        name: 'produto B',
+      };
+  
+      const { name, id } = updatedProductMock;
+
+      beforeEach(() => {
+        sinon.stub(productsModel, 'getProductById').resolves(model);
+        sinon.stub(productsModel, 'updateProduct').resolves(updatedProductMock);
+      });
+
+      afterEach(() => {
+        productsModel.getProductById.restore();
+        productsModel.updateProduct.restore();
+      });
+
+      it('Será validado que é retornado um objeto', async () => {
+        const received = await productsService.updateProduct(name, id);
+        expect(received).to.be.an('object');
+      });
+    });
+    
+    describe('4.2 - Caso de falha:', () => {
+      const reqBodyMock = {
+        id: 3,
+        name: 'produto C',
+      };
+  
+      const { name, id } = reqBodyMock;
+      const responseMock = 'not found';
+
+      beforeEach(() => {
+        sinon.stub(productsModel, 'getProductById').resolves(null);
+      });
+
+      afterEach(() => {
+        productsModel.getProductById.restore();
+      });
+
+      it('Será validado que a mensagem correta é retornada', async () => {
+        const received = await productsService.updateProduct(name, id);
+        expect(received).to.be.equal(responseMock);
+      });
+    });
+  });
 });

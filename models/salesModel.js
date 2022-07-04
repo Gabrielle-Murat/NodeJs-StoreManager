@@ -28,6 +28,30 @@ const getSales = async () => {
   return salesList.map(serialize);
 };
 
+const getSalesById = async (id) => {
+  const salesIdQuery = `
+    SELECT
+      s.date,
+      sp.product_id,
+      sp.quantity
+    FROM
+      StoreManager.sales_products AS sp
+        INNER JOIN
+      StoreManager.sales AS s ON sp.sale_id = s.id
+    WHERE
+      s.id = ?
+    ORDER BY
+      sp.sale_id ASC,
+      sp.product_id ASC;
+  `;
+
+  const [salesArray] = await connection.execute(salesIdQuery, [id]);
+
+  if (salesArray.length === 0) return null;
+  return salesArray.map(serialize);
+};
+
 module.exports = {
   getSales,
+  getSalesById,
 };

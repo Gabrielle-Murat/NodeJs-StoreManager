@@ -230,4 +230,56 @@ describe('Controller de Products:', () => {
       });
     });
   });
+
+  describe('5 - Deleta um produto no db:', () => {
+    describe('5.1 - Caso de sucesso:', () => {
+      const req = {};
+      const res = {};
+
+      beforeEach(() => {
+        req.body = {};
+        req.params = { id: 1 };
+        res.status = sinon.stub().returns(res);
+        res.end = sinon.stub().returns();
+        sinon.stub(productsService, 'deleteProduct').resolves(undefined);
+      });
+
+      afterEach(() => {
+        productsService.deleteProduct.restore();
+      });
+
+      it('Será validado que é retornado status 204', async () => {
+        await productsController.deleteProduct(req, res);
+        expect(res.status.calledWith(204)).to.be.equal(true);
+      });
+    });
+
+    describe('5.2 - Caso de falha', () => {
+      const req = {};
+      const res = {};
+      const model = 'not found';
+
+      beforeEach(() => {
+        req.body = {};
+        req.params = { id: 0 };
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+        sinon.stub(productsService, 'deleteProduct').resolves(model);
+      });
+
+      afterEach(() => {
+        productsService.deleteProduct.restore();
+      });
+
+      it('Será validado que é retornado status 404', async () => {
+        await productsController.deleteProduct(req, res);
+        expect(res.status.calledWith(404)).to.be.equal(true);
+      });
+
+      it('Será validado que é retornada a mensagem "Product not found"', async () => {
+        await productsController.deleteProduct(req, res);
+        expect(res.json.calledWith({ message: 'Product not found' })).to.be.equal(true);
+      });
+    });
+  });
 });

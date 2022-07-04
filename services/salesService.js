@@ -8,6 +8,13 @@ const getSales = async () => {
   return salesList;
 };
 
+const getSalesById = async (id) => {
+  const sales = await Sales.getSalesById(id);
+
+  return sales;
+};
+
 module.exports = {
   getSales,
+  getSalesById,
 };

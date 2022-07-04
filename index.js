@@ -11,5 +11,8 @@ app.listen(process.env.PORT, () => {
 });
 
 const productsRouter = require('./middlewares/productsRouter');
+const salesRouter = require('./middlewares/salesRouter');
 
 app.use('/products', productsRouter);
+
+app.use('/sales', salesRouter);

@@ -124,4 +124,21 @@ describe('Model de Products:', () => {
       expect(received).to.have.property('id', 1);
     });
   });
+
+  describe('5 - Deleta um produto no db:', () => {
+    const idMock = 1;
+
+    beforeEach(() => {
+      sinon.stub(connection, 'execute').resolves();
+    });
+
+    afterEach(() => {
+      connection.execute.restore();
+    });
+
+    it('Será validado que a funcao deleteProduct é chamada corretamente', async () => {
+      const received = await productsModel.deleteProduct(idMock);
+      expect(received).to.be.undefined;
+    });
+  });
 });

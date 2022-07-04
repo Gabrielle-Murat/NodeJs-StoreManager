@@ -145,4 +145,47 @@ describe('Service de Products:', () => {
       });
     });
   });
+
+  describe('5 - Deleta um produto no db:', () => {
+    describe('5.1 - Caso de sucesso:', () => {
+      const idMock = 1;
+      const model = {
+        id: 1,
+        name: 'produto A',
+      };
+
+      beforeEach(() => {
+        sinon.stub(productsModel, 'getProductById').resolves(model);
+        sinon.stub(productsModel, 'deleteProduct').resolves(undefined);
+      });
+
+      afterEach(() => {
+        productsModel.getProductById.restore();
+        productsModel.deleteProduct.restore();
+      });
+
+      it('Será validado que o produto foi deletado', async () => {
+        const received = await productsService.deleteProduct(idMock);
+        expect(received).to.be.undefined;
+      });
+    });
+
+    describe('5.2 - Caso de falha:', () => {
+      const idMock = 0;
+      const model = 'not found';
+
+      beforeEach(() => {
+        sinon.stub(productsModel, 'getProductById').resolves(null);
+      });
+
+      afterEach(() => {
+        productsModel.getProductById.restore();
+      });
+
+      it('Será validado que a mensagem correta é retornada', async () => {
+        const received = await productsService.deleteProduct(idMock);
+        expect(received).to.be.equal(model);
+      });
+    });
+  });
 });

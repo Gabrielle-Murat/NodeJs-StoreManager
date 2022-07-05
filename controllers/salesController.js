@@ -19,7 +19,20 @@ const getSalesById = async (req, res) => {
   return res.status(200).json(sales);
 };
 
+// requisito 06
+
+const createSale = async (req, res) => {
+  const saleArray = req.body;
+
+  const newSale = await Sales.createSale(saleArray);
+
+  if (newSale === 'not found') return res.status(404).json({ message: 'Product not found' });
+
+  return res.status(201).json(newSale);
+};
+
 module.exports = {
   getSales,
   getSalesById,
+  createSale,
 };

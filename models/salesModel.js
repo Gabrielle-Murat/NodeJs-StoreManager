@@ -51,7 +51,38 @@ const getSalesById = async (id) => {
   return salesArray.map(serialize);
 };
 
+// requisito 06
+
+const createSaleOnTableSales = async () => {
+  const createSaleQuery = `
+    INSERT INTO StoreManager.sales
+      (date)
+    VALUES
+      (NOW());
+  `;
+
+  const [newSale] = await connection.execute(createSaleQuery);
+
+  return newSale;
+};
+
+const createSaleOnTableSalesProducts = async (saleId, productId, productQuantity) => {
+  const createSalesProductsQuery = `
+    INSERT INTO StoreManager.sales_products
+      (sale_id, product_id, quantity)
+    VALUES
+      (?, ?, ?);
+  `;
+
+  const [response] = await connection
+    .execute(createSalesProductsQuery, [saleId, productId, productQuantity]);
+  
+  return response;
+};
+
 module.exports = {
   getSales,
   getSalesById,
+  createSaleOnTableSales,
+  createSaleOnTableSalesProducts,
 };

@@ -5,9 +5,11 @@ const productsValidation = require('./productsValidation');
 
 const router = express.Router();
 
-router.get('/', Products.getProducts);
+router.get('/search', Products.getProductByTerm);
 
 router.get('/:id', Products.getProductById);
+
+router.get('/', Products.getProducts);
 
 router.post('/', productsValidation, Products.createProduct);
 

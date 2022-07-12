@@ -98,6 +98,18 @@ const deleteSaleOnTableSales = async (id) => {
   await connection.execute(deleteSalesQuery, [id]);
 };
 
+// requisito 16
+
+const updateSale = async (productId, saleId, productQuantity) => {
+  const updateSaleQuery = `
+    UPDATE StoreManager.sales_products SET quantity = ?
+    WHERE sale_id = ? AND product_id = ?;
+  `;
+
+  await connection
+    .execute(updateSaleQuery, [productQuantity, saleId, productId]);
+};
+
 module.exports = {
   getSales,
   getSalesById,
@@ -105,4 +117,5 @@ module.exports = {
   createSaleOnTableSalesProducts,
   deleteSaleOnTableSalesProducts,
   deleteSaleOnTableSales,
+  updateSale,
 };

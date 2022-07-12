@@ -46,8 +46,20 @@ const createSale = async (saleArray) => {
   return response;
 };
 
+// requisito 14
+
+const deleteSale = async (saleId) => {
+  const checkExistance = await Sales.getSalesById(saleId);
+
+  if (!checkExistance) return 'not found';
+
+  await Sales.deleteSaleOnTableSalesProducts(saleId);
+  await Sales.deleteSaleOnTableSales(saleId);
+};
+
 module.exports = {
   getSales,
   getSalesById,
   createSale,
+  deleteSale,
 };

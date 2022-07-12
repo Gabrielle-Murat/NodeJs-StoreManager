@@ -46,10 +46,21 @@ const deleteProduct = async (productId) => {
   await Products.deleteProduct(productId);
 };
 
+// requisito 18
+
+const getProductByTerm = async (queryTerm) => {
+  const products = await Products.getProductByTerm(queryTerm);
+
+  if (products.length === 0) return [];
+
+  return products;
+};
+
 module.exports = {
   getProducts,
   getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
+  getProductByTerm,
 };

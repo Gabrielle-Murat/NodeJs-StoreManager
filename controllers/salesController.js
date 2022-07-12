@@ -31,8 +31,21 @@ const createSale = async (req, res) => {
   return res.status(201).json(newSale);
 };
 
+// requisito 14
+
+const deleteSale = async (req, res) => {
+  const { id } = req.params;
+  
+  const sales = await Sales.deleteSale(id);
+  
+  if (sales === 'not found') return res.status(404).json({ message: 'Sale not found' });
+
+  return res.status(204).end();
+};
+
 module.exports = {
   getSales,
   getSalesById,
   createSale,
+  deleteSale,
 };

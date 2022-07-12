@@ -80,9 +80,29 @@ const createSaleOnTableSalesProducts = async (saleId, productId, productQuantity
   return response;
 };
 
+// requisito 14
+
+const deleteSaleOnTableSalesProducts = async (saleId) => {
+  const deleteSalesProductsQuery = `
+    DELETE FROM StoreManager.sales_products WHERE sale_id = ?;
+  `;
+
+  await connection.execute(deleteSalesProductsQuery, [saleId]);
+};
+
+const deleteSaleOnTableSales = async (id) => {
+  const deleteSalesQuery = `
+    DELETE FROM StoreManager.sales WHERE id = ?;
+  `;
+
+  await connection.execute(deleteSalesQuery, [id]);
+};
+
 module.exports = {
   getSales,
   getSalesById,
   createSaleOnTableSales,
   createSaleOnTableSalesProducts,
+  deleteSaleOnTableSalesProducts,
+  deleteSaleOnTableSales,
 };

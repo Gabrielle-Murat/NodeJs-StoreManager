@@ -57,10 +57,24 @@ const deleteProduct = async (productId) => {
   await connection.execute(deleteProductQuery, [productId]);
 };
 
+// requisito 18
+
+const getProductByTerm = async (queryTerm) => {
+  const getProductByTermQuery = `
+    SELECT * FROM StoreManager.products
+    WHERE name LIKE CONCAT('%', ?, '%');
+  `;
+
+  const [productsList] = await connection.execute(getProductByTermQuery, [queryTerm]);
+
+  return productsList;
+};
+
 module.exports = {
   getProducts,
   getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
+  getProductByTerm,
 };

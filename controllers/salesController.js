@@ -43,9 +43,24 @@ const deleteSale = async (req, res) => {
   return res.status(204).end();
 };
 
+// requisito 16
+
+const updateSale = async (req, res) => {
+  const { id } = req.params;
+  const saleArray = req.body;
+
+  const response = await Sales.updateSale(id, saleArray);
+
+  if (response === 'Sale not found') return res.status(404).json({ message: response });
+  if (response === 'Product not found') return res.status(404).json({ message: response });
+
+  return res.status(200).json(response);
+};
+
 module.exports = {
   getSales,
   getSalesById,
   createSale,
   deleteSale,
+  updateSale,
 };

@@ -51,10 +51,31 @@ const createSale = async (saleArray) => {
 const deleteSale = async (saleId) => {
   const checkExistance = await Sales.getSalesById(saleId);
 
-  if (!checkExistance) return 'not found';
+  if (checkExistance === null) return 'not found';
 
   await Sales.deleteSaleOnTableSalesProducts(saleId);
   await Sales.deleteSaleOnTableSales(saleId);
+};
+
+// requisito 16
+
+const updateSale = async (saleId, saleArray) => {
+  const checkSaleExistance = await Sales.getSalesById(saleId);
+  if (checkSaleExistance === null) return 'Sale not found';
+
+  const checkProductIdExistance = await productIdExistanceCheck(saleArray);
+  if (checkProductIdExistance === null) return 'Product not found';
+  
+  const response = {
+    saleId,
+    itemsUpdated: saleArray,
+  };
+
+  saleArray.forEach(async ({ productId, quantity }) => {
+    await Sales.updateSale(productId, saleId, quantity);
+  });
+
+  return response;
 };
 
 module.exports = {
@@ -62,4 +83,5 @@ module.exports = {
   getSalesById,
   createSale,
   deleteSale,
+  updateSale,
 };

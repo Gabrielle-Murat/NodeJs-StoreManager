@@ -1,9 +1,9 @@
 <!-- WIP -->
 
-<h1 align="center">Projeto</h1>
+<h1 align="center">Projeto NodeJs - Store Manager</h1>
 
 <p align="center"> 
-  <img src="gif/nome.jpg" alt="Nome Logo" width="37%">
+  <img src="gif/nodejs-api-rest.png" alt="NodeJs-API-REST Logo" width="45%">
 </p>
 
 <p align="center">
@@ -67,9 +67,13 @@
   <br />
   <a href="https://nodejs.org/en/" target="_blank"><img src="gif/nodejs-logo.png" alt="NodeJs Logo" width="10.5%"></a>
   <a href="https://nodemon.io/" target="_blank"><img src="gif/nodemon-logo.png" alt="Nodemon Logo" width="9%"></a>
+  <a href="https://mochajs.org/" target="_blank"><img src="gif/mocha-logo.png" alt="Mocha Logo" width="10.5%"></a>
+  <a href="https://www.chaijs.com/" target="_blank"><img src="gif/chai-logo.png" alt="Chai Logo" width="9%"></a>
+  <a href="https://sinonjs.org/" target="_blank"><img src="gif/sinon-logo.png" alt="Sinon Logo" width="10%"></a>
   <br />
-  <a href="https://expressjs.com/" target="_blank"><img src="gif/express-logo.png" alt="Express Logo" width="20%"></a>
+  <a href="https://expressjs.com/" target="_blank"><img src="gif/express-logo.png" alt="Express Logo" width="20.3%"></a>
   <a href="https://joi.dev/" target="_blank"><img src="gif/joi-logo.png" alt="Joi Logo" width="5.5%"></a>
+  <a href="https://www.restapitutorial.com/" target="_blank"><img src="gif/rest.png" alt="Rest Logo" width="7.4%"></a>
 </p>
 
 <p align="center">
@@ -101,7 +105,7 @@
 <h2 id="instruções"> :scroll: Instruções</h2>
 
 1. Clone o repositório
-  * `git clone git@github.com:Gabrielle-Murat/Projeto.git`
+  * `git clone git@github.com:Gabrielle-Murat/NodeJs-StoreManager.git`
   * Entre na pasta do repositório que você acabou de clonar;
 <br />
 
@@ -109,12 +113,37 @@
   * `npm install`
 <br />
 
-3. Como restaurar o arquivo `talker.json`:
-  * Execute o comando: `npm run restore`
+3. Como restaurar o banco de dados, se necessário:
+  * Abra o MySQL Workbench,
+  * Abra uma nova aba de query e cole dentro dela todo o conteúdo dos arquivos: `migration.sql` e, logo abaixo, `seed.sql`,
+  * Execute a query e aguarde alguns segundos,
+  * Atualize a lista de dbs;
 <br />
   
-4. Para iniciar o servidor em modo de desenvolvimento:
-  * Execute o comando: `npm run dev`
+4. Utilizando Docker:
+  * Rode os serviços `node` e `db` com o comando `docker-compose up -d` (adapte a porta padrão, se necessário),
+  * Com isso, serão inicializados dois containers: `store_manager` e `store_manager_db`
+  * Use o comando `docker exec -it store_manager bash` (para acessar o terminal interativo do container `store_manager`),
+  * As credenciais de acesso ao db estão definidas no arquivo `docker-compose.yml`, sendo acessíveis no container através das variáveis de ambiente          `MYSQL_USER` e `MYSQL_PASSWORD`
+  * Instale as dependências com `npm install`
+  * Todos os comandos disponíveis no `package.json` agora podem ser executados no terminal do container
+<br />
+
+5. Configurando as variáveis de ambiente:
+  * Cria um arquivo .env na raiz do projeto com as variáveis de ambiente
+  * O arquivo terá o seguinte formato:
+    ```sh
+      MYSQL_HOST=localhost
+      MYSQL_USER=nome
+      MYSQL_PASSWORD=senha
+      MYSQL_DATABASE=StoreManager
+      PORT=portaParaConexãoComOServidor
+    ```
+  * As variáveis de ambiente já estão configuradas no arquivo `connection.js` na pasta models;
+
+
+6. Para iniciar o servidor em modo de desenvolvimento:
+  * Execute o comando: `npm run debug`
 <br />
     
 <p align="center">

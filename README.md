@@ -53,7 +53,7 @@
 
   <p align="center">
   Projeto desenvolvido durante a formação de BackEnd na Trybe com o intuito de consolidar o aprendizado de NodeJs, utilizando o padrão de arquitetura MSC e o padrão arquitetural de APIs REST, bem como o framework de testes Mocha junto às libraries Chai e Sinon.<br /><br />
-  <img src="" alt="Arquitetura MSC" width="50%" />
+  <img src="gif/msc.png" alt="Arquitetura MSC" width="70%" />
   </p>
 
 <p align="center">
@@ -143,7 +143,7 @@
       PORT=portaParaConexãoComOServidor
     ```
   * As variáveis de ambiente já estão configuradas no arquivo `connection.js` na pasta models;
-
+<br />
 
 6. Para iniciar o servidor em modo de desenvolvimento:
   * Execute o comando: `npm run debug`

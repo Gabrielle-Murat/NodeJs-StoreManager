@@ -87,18 +87,24 @@
 
 <details>
   <summary>Descrição</summary><br />
-  Tem-se um arquivo (` `) que foi utilizado como base para fazer  .<br /><br />
+  Foi construída uma API para funcionar como um sistema de gerenciamento de vendas no formato dropshipping, no qual é possível criar, visualizar, deletar e atualizar produtos e vendas.
+  Tem-se os arquivos (`migration.sql` e `seed.sql`) que foram utilizados para criação e população do banco de dados.<br /><br />
   
   Neste projeto eu realizei:
   
   <ol>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Utilização do banco de dados MySQL para gestão de dados</li>
+    <li>Construção de um CRUD onde o usuário não depende de cadastro para interagir</li>
+    <li>Validação de dados enviados nas requisições para alterar ou cadastrar vendas e produtos</li>
+    <li>
+      Utilização do padrão REST para garantir que: os endpoints sempre retornem respostas com códigos de status corretos, os verbos http são adequados para cada operação e, as URLs estão agrupadas e padronizadas em cada recurso
+    </li>
+    <li>
+      Utilização da arquitetura MSC para garantir que: o banco de dados seja acessado somente pelo Model, que o Service seja responsável pelas regras de negócio e, que o Controller seja responsável por receber as requisições e enviar as respostas
+    </li>
   </ol><br />
 
-  Durante o desenvolvimento foi utilizado Docker.<br />  
+  Durante o desenvolvimento foi utilizado Docker para evitar a restauração manual do banco de dados.<br />  
 </details>
 
 <p align="center">

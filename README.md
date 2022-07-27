@@ -51,7 +51,10 @@
 
 <h2 id="sobre"> :pencil: Sobre o projeto </h2>
 
-  <p align="center">Projeto desenvolvido durante a formação de BackEnd na Trybe com o intuito de consolidar o aprendizado de  .</p>
+  <p align="center">
+  Projeto desenvolvido durante a formação de BackEnd na Trybe com o intuito de consolidar o aprendizado de NodeJs, utilizando o padrão de arquitetura MSC e o padrão arquitetural de APIs REST, bem como o framework de testes Mocha junto às libraries Chai e Sinon.<br /><br />
+  <img src="" alt="Arquitetura MSC" width="50%" />
+  </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" />

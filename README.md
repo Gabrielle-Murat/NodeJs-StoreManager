@@ -21,7 +21,7 @@
     <li><a href="#descrição-do-projeto"> ➤ Descrição do projeto</a></li>
     <li><a href="#instruções"> ➤ Instruções</a></li>
     <li><a href="#requisitos"> ➤ Requisitos realizados </a></li>
-    <li><a href="#requisito1"> ➤ Requisito 1:  </a></li>
+    <li><a href="#requisito1"> ➤ Requisito 1: Criação de endpoints para listar produtos </a></li>
     <li><a href="#requisito2"> ➤ Requisito 2:  </a></li>
     <li><a href="#requisito3"> ➤ Requisito 3:  </a></li>
     <li><a href="#requisito4"> ➤ Requisito 4:  </a></li>
@@ -164,84 +164,79 @@
 <details open="open">
   <summary>Criação de :</summary>
 
-  <h4 id="requisito1">Requisito 1: Criação </h4>
+  <h4 id="requisito1">Requisito 1: Criação de endpoints para listar produtos </h4>
   
-    1. Criar um :
-      1.1. 
-      1.2. 
+    1. Criar dois endpoints para listar: todos os produtos e, o produto baseado no id da rota:
+      1.1. Listar todos os produtos através do caminho `/products`.
+      1.2. Listar apenas o produto com o `id` presente na rota através do caminho `/products/:id`.
+      1.3. Listar o resultado de forma crescente pelo campo `id`.
 
-  <h4 id="requisito2">Requisito 2: Criação </h4>
+  <h4 id="requisito2">Requisito 2: Desenvolvimento de testes para cobertura de 5% </h4>
   
-    2. Criar um :
-      2.1. 
-      2.2. 
+    2. Desenvolver testes para cobrir 5% de cada camada da aplicação:
+      2.1. Os testes da camada model devem mockar o db.
 
-  <h4 id="requisito3">Requisito 3: Criação </h4>
+  <h4 id="requisito3">Requisito 3: Criação de endpoint para cadastrar produtos </h4>
   
-    3. Criar um :
-      3.1. 
-      3.2. 
-      3.3. 
-      3.4. 
+    3. Criar um endpoint para cadastrar produtos:
+      3.1. Cadastrar produtos através do caminho `/products`.
+      3.2. Os produtos devem ser salvos na tabela correta do db.
+      3.3. O corpo da requisição deve conter o campo `name`
 
-  <h4 id="requisito4">Requisito 4: Criação </h4>
+  <h4 id="requisito4">Requisito 4: Criação de validações para produtos </h4>
   
-    4. Validar :
-      4.1. 
-      4.2. 
-      4.3. 
+    4. Validar o campo `name` recebido no corpo da requisição:
+      4.1. As validações devem retornar os status corretos e suas respectivas mensagens de erros.
+      4.2. Não deve ser possível realizar operações em um produto sem o campo `name`.
+      4.3. O campo `name` deve possuir ao menos 5 caracteres.
 
-  <h4 id="requisito5">Requisito 5: Criação </h4>
+  <h4 id="requisito5">Requisito 5: Desenvolvimento de testes para cobertura de 10% </h4>
   
-    5. Criar um :
-      5.1. 
-      5.2. 
-      5.3. 
-      5.4. 
-      5.5. 
-      5.6. 
-      5.7. 
-      5.8. 
-      5.9. 
-      5.10. 
+    5. Desenvolver testes para cobrir 10% de cada camada da aplicação:
+      5.1. Os testes da camada model devem mockar o db.
 
-
-  <h4 id="requisito6">Requisito 6: Criação </h4>
+  <h4 id="requisito6">Requisito 6: Criação de endpoint para validar e cadastrar vendas </h4>
   
-    6. Criar um :
-      6.1. 
-      6.2. 
-      6.3. 
-      6.4. 
-      6.5. 
+    6. Criar um endpoint para cadastrar vendas:
+      6.1. Cadastrar vendas através do caminho `/sales`.
+      6.2. As vendas enviadas devem ser salvas nas tabelas: `sales` e `sales_products` do db.
+      6.3. Deve ser possível cadastrar a venda de vários produtos na mesma requisição.
+      6.4. O corpo da requisição deve conter um array de objetos, onde cada objeto representa um produto.
+      6.5. Cada objeto possui as seguintes chaves: `productId` e `quantity`.
+      6.6. Não deve ser possível realizar operações em uma venda sem os campos `productId` e `quantity`.
+      6.7. O campo `quantity` deve ser maior que zero.
+      6.8. Não deve ser possível realizar operações em uma venda se o campo `id` não existir no db.
 
-  <h4 id="requisito7">Requisito 7: Criação </h4>
+  <h4 id="requisito7">Requisito 7: Desenvolvimento de testes para cobertura de 15% </h4>
   
-    7. Criar um :
-      7.1. 
-      7.2. 
-      7.3. 
+    7. Desenvolver testes para cobrir 15% de cada camada da aplicação:
+      7.1. Os testes da camada model devem mockar o db.
 
-  <h4 id="requisito8">Requisito 8: Criação </h4>
+  <h4 id="requisito8">Requisito 8: Criação de endpoints para listar vendas </h4>
   
-    8. Criar em :
-      8.1. 
-      8.2. 
-      8.3. 
-      8.4. 
-      8.5. 
+    8. Criar dois endpoints para listar: todos os produtos e, o produto baseado no id da rota:
+      8.1. Listar todos as vendas através do caminho `/sales`.
+      8.2. Listar apenas a venda com o `id` presente na rota através do caminho `/sales/:id`.
+      8.3. Listar o resultado de forma crescente pelo campo `saleId`.
+      8.4. Em caso de empate: listar de forma crescente pelo campo `productId`.
 
-  <h4 id="requisito9">Requisito 9: Criação </h4>
+  <h4 id="requisito9">Requisito 9: Desenvolvimento de testes para cobertura de 20% </h4>
   
-    9. 
+    9. Desenvolver testes para cobrir 20% de cada camada da aplicação:
+      9.1. Os testes da camada model devem mockar o db.
 
-  <h4 id="requisito10">Requisito 10: </h4>
+  <h4 id="requisito10">Requisito 10: Criação de endpoint para atualizar um produto </h4>
   
-    10. 
+    10. Criar um endpoint para atualizar um produto baseado no id da rota:
+      10.1. Atualizar produtos através do caminho `/products/:id`.
+      10.2. O corpo da requisição deve conter o campo `name`.
+      10.3. Validar o corpo da requisição assim como no cadastro.
+      10.4. Não deve ser possível alterar um produto que não existe no db.
 
-  <h4 id="requisito11">Requisito 11: </h4>
+  <h4 id="requisito11">Requisito 11: Desenvolvimento de testes para cobertura de 25% </h4>
   
-    11. 
+    11. Desenvolver testes para cobrir 25% de cada camada da aplicação:
+      11.1. Os testes da camada model devem mockar o db.
   
   <h4 id="requisito12">Requisito 12: </h4>
   

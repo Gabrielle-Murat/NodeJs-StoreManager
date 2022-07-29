@@ -22,25 +22,25 @@
     <li><a href="#instruções"> ➤ Instruções</a></li>
     <li><a href="#requisitos"> ➤ Requisitos realizados </a></li>
     <li><a href="#requisito1"> ➤ Requisito 1: Criação de endpoints para listar produtos </a></li>
-    <li><a href="#requisito2"> ➤ Requisito 2:  </a></li>
-    <li><a href="#requisito3"> ➤ Requisito 3:  </a></li>
-    <li><a href="#requisito4"> ➤ Requisito 4:  </a></li>
-    <li><a href="#requisito5"> ➤ Requisito 5:  </a></li>
-    <li><a href="#requisito6"> ➤ Requisito 6:  </a></li>
-    <li><a href="#requisito7"> ➤ Requisito 7:  </a></li>
-    <li><a href="#requisito9"> ➤ Requisito 9:  </a></li>
-    <li><a href="#requisito10"> ➤ Requisito 10:  </a></li>
-    <li><a href="#requisito11"> ➤ Requisito 11:  </a></li>
-    <li><a href="#requisito12"> ➤ Requisito 12:  </a></li>
-    <li><a href="#requisito13"> ➤ Requisito 13:  </a></li>
-    <li><a href="#requisito13"> ➤ Requisito 13:  </a></li>
-    <li><a href="#requisito14"> ➤ Requisito 14:  </a></li>
-    <li><a href="#requisito15"> ➤ Requisito 15:  </a></li>
-    <li><a href="#requisito16"> ➤ Requisito 16:  </a></li>
-    <li><a href="#requisito17"> ➤ Requisito 17:  </a></li>
-    <li><a href="#requisito18"> ➤ Requisito 18:  </a></li>
-    <li><a href="#requisito19"> ➤ Requisito 19:  </a></li>
-    <li><a href="#requisito20"> ➤ Requisito 20:  </a></li>
+    <li><a href="#requisito2"> ➤ Requisito 2: Desenvolvimento de testes para cobertura de 5% </a></li>
+    <li><a href="#requisito3"> ➤ Requisito 3: Criação de endpoint para cadastrar produtos </a></li>
+    <li><a href="#requisito4"> ➤ Requisito 4: Criação de validações para produtos </a></li>
+    <li><a href="#requisito5"> ➤ Requisito 5: Desenvolvimento de testes para cobertura de 10% </a></li>
+    <li><a href="#requisito6"> ➤ Requisito 6: Criação de endpoint para validar e cadastrar vendas </a></li>
+    <li><a href="#requisito7"> ➤ Requisito 7: Desenvolvimento de testes para cobertura de 15% </a></li>
+    <li><a href="#requisito8"> ➤ Requisito 8: Criação de endpoints para listar vendas </a></li>
+    <li><a href="#requisito9"> ➤ Requisito 9: Desenvolvimento de testes para cobertura de 20% </a></li>
+    <li><a href="#requisito10"> ➤ Requisito 10: Criação de endpoint para atualizar um produto </a></li>
+    <li><a href="#requisito11"> ➤ Requisito 11: Desenvolvimento de testes para cobertura de 25% </a></li>
+    <li><a href="#requisito12"> ➤ Requisito 12: Criação de endpoint para deletar um produto </a></li>
+    <li><a href="#requisito13"> ➤ Requisito 13: Desenvolvimento de testes para cobertura de 30% </a></li>
+    <li><a href="#requisito14"> ➤ Requisito 14: Criação de endpoint para deletar uma venda </a></li>
+    <li><a href="#requisito15"> ➤ Requisito 15: Desenvolvimento de testes para cobertura de 35% </a></li>
+    <li><a href="#requisito16"> ➤ Requisito 16: Criação de endpoint para atualizar uma venda </a></li>
+    <li><a href="#requisito17"> ➤ Requisito 17: Desenvolvimento de testes para cobertura de 40% </a></li>
+    <li><a href="#requisito18"> ➤ Requisito 18: Criação de endpoint para busca de produtos por termo </a></li>
+    <li><a href="#requisito19"> ➤ Requisito 19: Desenvolvimento de testes para cobertura de 50% </a></li>
+    <li><a href="#requisito20"> ➤ Requisito 20: Desenvolvimento de testes para cobertura de 60% </a></li>
     <li><a href="#créditos"> ➤ Créditos </a></li>
   </ol>
 </details>
@@ -162,7 +162,7 @@
 <h2 id="requisitos"> :woman_technologist: Requisitos Realizados:</h2>
 
 <details open="open">
-  <summary>Criação de :</summary>
+  <summary>Criação de API:</summary>
 
   <h4 id="requisito1">Requisito 1: Criação de endpoints para listar produtos </h4>
   
@@ -286,13 +286,7 @@
   
     19. Desenvolver testes para cobrir 50% de cada camada da aplicação:
       19.1. Os testes da camada model devem mockar o db.
-
-</details>
-<br />
-
-<details open="open">
-  <summary></summary>
-
+  
   <h4 id="requisito20">Requisito 20: Desenvolvimento de testes para cobertura de 60% </h4>
   
     20. Desenvolver testes para cobrir 60% de cada camada da aplicação:
@@ -300,6 +294,7 @@
 
 </details>
 <br />
+
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" />

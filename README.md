@@ -238,37 +238,54 @@
     11. Desenvolver testes para cobrir 25% de cada camada da aplicação:
       11.1. Os testes da camada model devem mockar o db.
   
-  <h4 id="requisito12">Requisito 12: </h4>
+  <h4 id="requisito12">Requisito 12: Criação de endpoint para deletar um produto </h4>
   
-    12. 
+    12. Criar um endpoint para deletar um produto baseado no id da rota:
+      12.1. Deletar produtos através do caminho `/products/:id`.
+      12.2. Não deve ser possível deletar um produto inexistente no db.
   
-  <h4 id="requisito13">Requisito 13: </h4>
+  <h4 id="requisito13">Requisito 13: Desenvolvimento de testes para cobertura de 30% </h4>
   
-    13. 
+    13. Desenvolver testes para cobrir 30% de cada camada da aplicação:
+      13.1. Os testes da camada model devem mockar o db.
   
-  <h4 id="requisito14">Requisito 14: </h4>
+  <h4 id="requisito14">Requisito 14: Criação de endpoint para deletar uma venda </h4>
   
-    14. 
+    14. Criar um endpoint para deletar uma venda baseado no id da rota:
+      12.1. Deletar vendas através do caminho `/sales/:id`.
+      12.2. Não deve ser possível deletar uma venda inexistente no db.
   
-  <h4 id="requisito15">Requisito 15: </h4>
+  <h4 id="requisito15">Requisito 15: Desenvolvimento de testes para cobertura de 35% </h4>
   
-    15. 
+    15. Desenvolver testes para cobrir 35% de cada camada da aplicação:
+      15.1. Os testes da camada model devem mockar o db.
 
-  <h4 id="requisito16">Requisito 16: </h4>
+  <h4 id="requisito16">Requisito 16: Criação de endpoint para atualizar uma venda </h4>
   
-    16. 
+    16. Criar um endpoint para atualizar uma venda baseado no id da rota:
+      10.1. Atualizar vendas através do caminho `/sales/:id`.
+      10.2. O corpo da requisição deve conter um array de objetos, onde cada objeto representa um produto.
+      10.3. Cada objeto possui as seguintes chaves: `productId` e `quantity`.
+      10.4. O corpo da requisição deve ser validado assim como no cadastro.
+      10.5. Não deve ser possível alterar uma venda que não existe no db.
 
-  <h4 id="requisito17">Requisito 17: </h4>
+  <h4 id="requisito17">Requisito 17: Desenvolvimento de testes para cobertura de 40% </h4>
   
-    17. 
+    17. Desenvolver testes para cobrir 40% de cada camada da aplicação:
+      17.1. Os testes da camada model devem mockar o db.
   
-  <h4 id="requisito18">Requisito 18: </h4>
+  <h4 id="requisito18">Requisito 18: Criação de endpoint para busca de produtos por termo </h4>
   
-    18. 
+    18. Criar um endpoint para buscar produtos baseados no queryTerm, se existirem.
+      18.1. Procurar produtos através do caminho `/products/search`.
+      18.2. Deve ser retornado um array de produtos que contenham em seu nome o termo passado na URL.
+      18.3. Caso nenhum produto seja encontrado, deve ser retornado um array vazio.
+      18.4. Se nenhum termo for passado, deve ser retornado um array contendo todos os produtos.
   
-  <h4 id="requisito19">Requisito 19: </h4>
+  <h4 id="requisito19">Requisito 19: Desenvolvimento de testes para cobertura de 50% </h4>
   
-    19. 
+    19. Desenvolver testes para cobrir 50% de cada camada da aplicação:
+      19.1. Os testes da camada model devem mockar o db.
 
 </details>
 <br />
@@ -276,9 +293,10 @@
 <details open="open">
   <summary></summary>
 
-  <h4 id="requisito20">Requisito 20: </h4>
+  <h4 id="requisito20">Requisito 20: Desenvolvimento de testes para cobertura de 60% </h4>
   
-    20. 
+    20. Desenvolver testes para cobrir 60% de cada camada da aplicação:
+      20.1. Os testes da camada model devem mockar o db.
 
 </details>
 <br />
@@ -289,5 +307,5 @@
 
 <h2 id="créditos"> 💳 Créditos</h2>
 
-<p align="center">Arquivo de  ( ) e docker compose (docker-compose.yml) fornecidos pela Trybe.</p>
+<p align="center">Arquivo de seed (seed.sql), migration (migration.sql), docker (Dockerfile) e docker compose (docker-compose.yml) fornecidos pela Trybe.</p>
 <p align="center"><a href="https://www.betrybe.com/" target="_blank"><img src="gif/trybe-logo.jpeg" alt="Trybe Logo" width="15%"></a></p>
